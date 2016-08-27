@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="shortcut icon" type="image/x-icon" href="images/icon/favicon.ico" />
+<title>DIGE1993</title>
+<script src="js/jquery-2.1.1.min.js"></script>
+<style>
+.level_2 {
+	text-indent:2em;
+}
+
+.level_3 {
+	text-indent:4em;
+}
+
+.level_4 {
+	display:block;
+	text-indent:6em
+}
+
+span {
+	padding-right:10px;
+}
+</style>
+<script>
+$(document).ready(function(e) {
+	$(".level_1_fold").click(function(e) {
+		$(this).parent().parent().siblings(".level_1").toggle();
+		e.stopPropagation(); //组织冒泡事件
+		switch($(this).attr("src")){
+		case "images/fold.gif":
+			$(this).attr("src","images/unfold.gif");
+			break;
+		case "images/unfold.gif":
+			$(this).attr("src","images/fold.gif");
+			break;
+		};
+    });
+	
+	$(".level_2_fold").click(function(e) {
+		$(this).parent().parent().siblings(".level_2").toggle();
+		e.stopPropagation(); //组织冒泡事件
+		switch($(this).attr("src")){
+		case "images/fold.gif":
+			$(this).attr("src","images/unfold.gif");
+			break;
+		case "images/unfold.gif":
+			$(this).attr("src","images/fold.gif");
+			break;
+		};
+    });
+	
+	$(".level_3_fold").click(function(e) {
+		$(this).parent().parent().siblings(".level_3").toggle();
+		e.stopPropagation(); //组织冒泡事件
+		switch($(this).attr("src")){
+		case "images/fold.gif":
+			$(this).attr("src","images/unfold.gif");
+			break;
+		case "images/unfold.gif":
+			$(this).attr("src","images/fold.gif");
+			break;
+		};
+    });
+});
+</script>
+</head>
+
+<body>
+    <div>
+        <div class=" level_1"><span><img class="level_1_fold" src="images/unfold.gif" /></span><span>公司</span></div>
+        
+        <div class="level_1">
+            <div class="level_2"><span><img class="level_2_fold" src="images/unfold.gif" /></span><span>综合管理模块</span></div>
+            
+            <div class="level_2">
+            	<div class="level_3"><span><img class="level_3_fold" src="images/unfold.gif" /></span><span>行政办公室</span></div>
+                <div class="level_3"><span class="level_4">机票组</span></div>
+                <div class="level_3"><span class="level_4">前台组</span></div>
+                <div class="level_3"><span class="level_4">司机组</span></div>                
+            </div>
+            
+            <div class="level_2">
+            	<div class="level_3"><span><img class="level_3_fold" src="images/unfold.gif" /></span><span>财务部</span></div>
+                <div class="level_3"><span class="level_4">成本组</span></div>
+                <div class="level_3"><span class="level_4">总账组</span></div>
+                <div class="level_3"><span class="level_4">资金组</span></div>                
+            </div>
+            
+            <div class="level_2">
+            	<div class="level_3"><span><img class="level_3_fold" src="images/unfold.gif" /></span><span>人力资源部</span></div>
+                <div class="level_3"><span class="level_4">薪酬绩效组</span></div>
+                <div class="level_3"><span class="level_4">招聘配置组</span></div>
+                <div class="level_3"><span class="level_4">培训发展组</span></div>                
+            </div>
+            
+            <div class="level_2">
+            	<div class="level_3"><span><img class="level_3_fold" src="images/unfold.gif" /></span><span>流程与信息管理部</span></div>
+            	<div class="level_3"><span class="level_4">BPM组</span></div>
+                <div class="level_3"><span class="level_4">SAP组</span></div>
+                <div class="level_3"><span class="level_4">PLM组</span></div>
+            </div>
+            
+        </div>
+        
+        <div class="level_1">
+        <div class="level_2"><span><img class="level_2_fold" src="images/unfold.gif" /></span><span>营销模块</span></div>
+        
+        <div class="level_2">
+            <div class="level_3">国际业务部</div>
+            <div class="level_3">亚洲区</div>
+            <div class="level_3">欧洲区</div>
+            <div class="level_3">美洲区</div>                
+        </div>
+        
+        <div class="level_2">营销办公室</div>
+        
+        <div class="level_2">创新设计部</div>
+        
+        <div class="level_2">用户体验设计部</div>
+        </div>
+        
+        <div class="level_1">
+        <div class="level_2"><span><img class="level_2_fold" src="images/unfold.gif" /></span><span>供应链模块</span></div>
+        </div>
+        
+        <div class="level_1">
+        <div class="level_2"><span><img class="level_2_fold" src="images/unfold.gif" /></span><span>研发模块</span></div>
+        </div>
+        
+        <div class="level_1">
+        <div class="level_2"><span><img class="level_2_fold" src="images/unfold.gif" /></span><span>质量模块</span></div>
+        </div>
+    </div>
+</body>
+</html>

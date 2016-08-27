@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ul li ul {
+	display:none;
+}
+
+ul li {
+	list-style:none;
+}
+</style>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	
+/*	var xzb = {name:"行政办公室",children:new Array("机票组","前台组","司机组","后勤组")};
+	var cwb = {name:"财务部",children:new Array("成本组","总账组","资金组")};
+	var rsb = {name:"人力资源部",children:new Array("薪酬绩效组","招聘配置组","培训发展组")};*/
+	var zhgl = {name:"综合管理模块",children:new Array(
+		{name:"行政办公室",children:new Array("机票组","前台组","司机组","后勤组")},
+		{name:"财务部",children:new Array("成本组","总账组","资金组")},
+		{name:"人力资源部",children:new Array("薪酬绩效组","招聘配置组","培训发展组")}
+	)};
+	var yx = {name:"营销模块",children:new Array(
+		{name:"营销办公室",children:new Array()},
+		{name:"国际业务部",children:new Array("欧洲区","亚洲区","美洲区")}
+	)};
+	
+	var yf = {name:"研发模块",children:new Array(
+		{name:"软件中心",children:new Array("芯片组","影像组","开发组","测试组")},
+		{name:"硬件中心",children:new Array("基带组","射频组","触控组","电子组")},
+		{name:"芯片平台部",children:new Array("贴片组","工艺组","BOM组")}
+	)};	
+	
+	var modules = new Array(zhgl,yx,yf);
+	
+	var num_level2 = modules.length;
+	
+	var ele_root = $("<ul></ul>");
+	for(var i = 0; i < num_level2; i++){
+		var ele_li  = $("<li></li>");
+		var ele_a = $("<a></a>");
+		ele_a.attr("href","#");
+		var ele_img = $("<img />");
+		ele_img.attr("src","images/fold.gif");
+		ele_a.append(ele_img);
+		var ele_aa = $("<a></a>");
+		ele_aa.attr("href","#");
+		ele_aa.html(modules[i].name);		
+		ele_li.append(ele_a);
+		ele_li.append(ele_aa);
+		
+		var num_level3 = modules[i].children.length;
+		if(num_level3 > 0){
+			ele_ul = $("<ul></ul>");
+			for(var j = 0; j < num_level3; j++){
+				var ele_li2  = $("<li></li>");
+				var ele_a2 = $("<a></a>");
+				ele_a2.attr("href","#");
+				var ele_img2 = $("<img />");
+				ele_img2.attr("src","images/fold.gif");
+				ele_a2.append(ele_img2);
+				var ele_aa2 = $("<a></a>");
+				ele_aa2.attr("href","#");
+				ele_aa2.html(modules[i].children[j].name);
+				ele_li2.append(ele_a2);
+				ele_li2.append(ele_aa2);
+				
+				var num_level4 = modules[i].children[j].children.length;
+				if(num_level4 > 0){
+					ele_ul2 = $("<ul></ul>");
+					for(var k = 0; k < num_level4; k++){
+						var ele_li3  = $("<li></li>");
+						var ele_a3 = $("<a></a>");
+						ele_a3.attr("href","#");
+						var ele_img3 = $("<img />");
+						ele_img3.attr("src","images/disc.gif");
+						ele_a3.append(ele_img3);
+						var ele_aa3 = $("<a></a>");
+						ele_aa3.attr("href","#");
+						ele_aa3.html(modules[i].children[j].children[k]);
+						ele_li3.append(ele_a3);
+						ele_li3.append(ele_aa3);
+						
+						ele_ul2.append(ele_li3);
+					}
+					ele_li2.append(ele_ul2);
+				}
+				
+				ele_ul.append(ele_li2);				
+			}
+			ele_li.append(ele_ul);
+		}
+		
+		ele_root.append(ele_li);
+	}
+	
+	$("body").append(ele_root);
+	
+	$("ul li a img").click(function(e) {
+		var chidren = $(this).parent().siblings("ul");
+		if(chidren.css("display") == "none"){
+			$(this).attr("src","images/unfold.gif");
+			chidren.css("display","block");
+		}
+		else if(chidren.css("display") == "block"){
+			$(this).attr("src","images/fold.gif");
+			chidren.css("display","none");
+		}
+		else{
+			$(this).attr("src","images/disc.gif");
+		}
+    });
+});
+</script>
+</head>
+
+<body>
+</body>
+</html>

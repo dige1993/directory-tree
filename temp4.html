@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ul li ul {
+	display:none;
+}
+
+ul li {
+	list-style:none;
+}
+</style>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	$("ul li a img").click(function(e) {
+		var chidren = $(this).parent().siblings("ul");
+		if(chidren.css("display") == "none"){
+			$(this).attr("src","images/unfold.gif");
+			chidren.css("display","block");
+		}
+		else if(chidren.css("display") == "block"){
+			$(this).attr("src","images/fold.gif");
+			chidren.css("display","none");
+		}
+		else{
+			$(this).attr("src","images/disc.gif");
+		}
+    });
+});
+</script>
+</head>
+
+<body>
+<ul>
+    <li><a><img src="images/fold.gif" /> </a><a href="#">天珑无线</a>
+        <ul>
+        <li><a><img src="images/fold.gif" /> </a><a href="#">综合管理模块</a>
+            <ul>
+                <li><a><img src="images/fold.gif" /> </a><a href="#">行政办公室</a>
+                    <ul>
+                        <li><a><img src="images/fold.gif" /> </a><a href="#">机票组</a></li>
+                        <li><a><img src="images/fold.gif" /> </a><a href="#">前台组</a></li>
+                        <li><a><img src="images/fold.gif" /> </a><a href="#">司机组</a></li>
+                    </ul>
+                </li>
+                <li><a><img src="images/fold.gif" /> </a><a href="#">财务部</a></li>
+                <li><a><img src="images/fold.gif" /> </a><a href="#">人力资源部</a></li>
+                <li><a><img src="images/fold.gif" /> </a><a href="#">董事办公室</a></li>
+            </ul>
+        </li>
+        <li><a><img src="images/fold.gif" /> </a><a href="#">营销模块</a>
+            <ul>
+                <li><a><img src="images/fold.gif" /> </a><a href="#">营销办公室</a></li>
+                <li><a><img src="images/fold.gif" /> </a><a href="#">国际业务部</a></li>
+                <li><a><img src="images/fold.gif" /> </a><a href="#">创新设计部</a></li>
+                <li><a><img src="images/fold.gif" /> </a><a href="#">用户与体验设计部</a></li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

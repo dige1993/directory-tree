@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ul li ul {
+	display:none;
+}
+
+ul li {
+	list-style:none;
+}
+</style>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	
+/*	var xzb = {name:"行政办公室",children:new Array("机票组","前台组","司机组","后勤组")};
+	var cwb = {name:"财务部",children:new Array("成本组","总账组","资金组")};
+	var rsb = {name:"人力资源部",children:new Array("薪酬绩效组","招聘配置组","培训发展组")};*/
+	var zhgl = {name:"综合管理模块",children:new Array(
+		{name:"行政办公室",children:new Array({name:"机票组"},{name:"前台组"},{name:"司机组"},{name:"后勤组"})},
+		{name:"财务部",children:new Array({name:"成本组"},{name:"总账组"},{name:"资金组"})},
+		{name:"人力资源部",children:new Array({name:"薪酬绩效组"},{name:"招聘配置组"},{name:"培训发展组"})}
+	)};
+	var yx = {name:"营销模块",children:new Array(
+		{name:"营销办公室"},
+		{name:"国际业务部",children:new Array({name:"欧洲区"},{name:"亚洲区"},{name:"美洲区"})}
+	)};
+	
+	var yf = {name:"研发模块",children:new Array(
+		{name:"软件中心",children:new Array({name:"芯片组"},{name:"影像组"},{name:"开发组"},{name:"测试组"})},
+		{name:"硬件中心",children:new Array({name:"基带组"},{name:"射频组"},{name:"触控组"},{name:"电子组"})},
+		{name:"芯片平台部",children:new Array({name:"贴片组"},{name:"工艺组"},{name:"BOM组"})}
+	)};	
+	
+	var modules = {name:"天珑无线", children:new Array(zhgl,yx,yf)};
+	var firstGeneration = modules.children;
+	
+	//$("body").append(seekRoot6(firstGeneration));
+	seekRoot5(firstGeneration,$("body"));
+	
+	function seekRoot5(m,p){
+		var ele_ul = $("<ul></ul>");
+		for(var i=0; i < m.length; i++){
+			var ele_li  = $("<li></li>");
+			var ele_a = $("<a></a>");
+			ele_a.attr("href","#");
+			var ele_img = $("<img />");
+			ele_img.attr("src","images/fold.gif");
+			ele_a.append(ele_img);
+			var ele_aa = $("<a></a>");
+			ele_aa.attr("href","#");
+			ele_aa.html(m[i].name);
+			ele_li.append(ele_a);
+			ele_li.append(ele_aa);
+			
+			if(m[i].children)
+				seekRoot5(m[i].children,ele_li);
+			ele_ul.append(ele_li);
+		}
+		p.append(ele_ul);
+	}
+	
+	function seekRoot6(m,p){
+		var ele_ul = $("<ul></ul>");
+		for(var i=0; i < m.length; i++){
+			var line = createLi(m[i].name)			
+			if(m[i].children)
+				seekRoot6(m[i].children,line);
+			ele_ul.append(line);
+		}
+		p.append(ele_ul);
+	}
+	
+	function createLi(txt){
+		var ele_li  = $("<li></li>");
+		var ele_a = $("<a></a>");
+		ele_a.attr("href","#");
+		var ele_img = $("<img />");
+		ele_img.attr("src","images/fold.gif");
+		ele_a.append(ele_img);
+		var ele_aa = $("<a></a>");
+		ele_aa.attr("href","#");
+		ele_aa.html(txt);
+		ele_li.append(ele_a);
+		ele_li.append(ele_aa);
+		
+		return ele_li;
+	}
+	
+	$("ul li a img").click(function(e) {
+		var chidren = $(this).parent().siblings("ul");
+		if(chidren.css("display") == "none"){
+			$(this).attr("src","images/unfold.gif");
+			chidren.css("display","block");
+		}
+		else if(chidren.css("display") == "block"){
+			$(this).attr("src","images/fold.gif");
+			chidren.css("display","none");
+		}
+		else{
+			$(this).attr("src","images/disc.gif");
+		}
+    });
+});
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
